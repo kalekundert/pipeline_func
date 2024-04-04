@@ -7,32 +7,25 @@ name = "pipeline_func"
 authors = [
   {name = "Kale Kundert", email = "kale@thekunderts.net"},
 ]
-readme = 'README.rst'
+readme = 'README.md'
 dynamic = ["version", "description"]
-requires-python = "~=3.8"
+requires-python = "~=3.0"
 classifiers = [
   'Programming Language :: Python :: 3',
 ]
-dependencies = [
-]
+dependencies = []
 
 [project.optional-dependencies]
 test = [
   'pytest',
-  'parametrize_from_file',
-]
-doc = [
-  'sphinx',
-  'sphinx_rtd_theme',
-  'autoclasstoc',
+  'polars',
 ]
 
 [project.urls]
-'Documentation' = 'https://pipeline-func.readthedocs.io/en/latest/'
 'Version Control' = 'https://github.com/kalekundert/pipeline_func'
 'Bug Tracker' = 'https://github.com/kalekundert/pipeline_func/issues'
 'Continuous Integration' = 'https://github.com/kalekundert/pipeline_func/actions'
-'Test Coverage' = 'https://coveralls.io/github/kalekundert/pipeline_func'
+'Test Coverage' = 'https://app.codecov.io/github/kalekundert/pipeline_func'
 
 [tool.ruff.lint]
 select = ["F"]
@@ -57,6 +50,6 @@ exclude_lines = [
 ]
 
 [tool.semantic_release]
-version_variables = ['macromol_dataframe/__init__.py:__version__']
+version_variables = ['pipeline_func.py:__version__']
 build_command = 'python -m pip install build && python -m build'
 major_on_zero = false
