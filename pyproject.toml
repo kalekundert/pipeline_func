@@ -1,0 +1,62 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "pipeline_func"
+authors = [
+  {name = "Kale Kundert", email = "kale@thekunderts.net"},
+]
+readme = 'README.rst'
+dynamic = ["version", "description"]
+requires-python = "~=3.8"
+classifiers = [
+  'Programming Language :: Python :: 3',
+]
+dependencies = [
+]
+
+[project.optional-dependencies]
+test = [
+  'pytest',
+  'parametrize_from_file',
+]
+doc = [
+  'sphinx',
+  'sphinx_rtd_theme',
+  'autoclasstoc',
+]
+
+[project.urls]
+'Documentation' = 'https://pipeline-func.readthedocs.io/en/latest/'
+'Version Control' = 'https://github.com/kalekundert/pipeline_func'
+'Bug Tracker' = 'https://github.com/kalekundert/pipeline_func/issues'
+'Continuous Integration' = 'https://github.com/kalekundert/pipeline_func/actions'
+'Test Coverage' = 'https://coveralls.io/github/kalekundert/pipeline_func'
+
+[tool.ruff.lint]
+select = ["F"]
+ignore = ["F405", "F403"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+addopts = "--doctest-modules --doctest-glob='*.rst'"
+doctest_optionflags = 'NORMALIZE_WHITESPACE'
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = ['pipeline_func']
+
+[tool.coverage.report]
+exclude_lines = [
+    "^\\s*raise AssertionError\\b",
+    "^\\s*raise NotImplementedError\\b",
+]
+
+[tool.semantic_release]
+version_variables = ['macromol_dataframe/__init__.py:__version__']
+build_command = 'python -m pip install build && python -m build'
+major_on_zero = false
