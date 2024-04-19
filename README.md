@@ -28,6 +28,14 @@ necessary without it:
 [1, 2, 2]
 ```
 
+Installation
+------------
+*Pipeline Functions* is available on PyPI:
+```
+$ pip install pipeline_func
+```
+Version numbers obey [semantic versioning](https://semver.org/).
+
 Documentation
 -------------
 This library provides a single function, named `f()`. The purpose of `f()` is 
