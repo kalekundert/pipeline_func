@@ -52,4 +52,4 @@ exclude_lines = [
 [tool.semantic_release]
 version_variables = ['pipeline_func.py:__version__']
 build_command = 'python -m pip install build && python -m build'
-major_on_zero = false
+major_on_zero = true
