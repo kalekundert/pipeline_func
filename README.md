@@ -63,15 +63,15 @@ can also use attribute access syntax (e.g. `X.my_attr`), item lookup syntax
 combination of the above (e.g. `X.my_method()[0]`) to easily extract 
 information from the input value.
 
-To make this more concrete, here are some examples showing how `f()` can be 
-used to call some common functions:
+To make all of the above more concrete, here are some examples showing how 
+`f()` can be used to call some common functions:
 
 Pipeline | Equivalent to | Result
 ---|---|---
 `[1, 2] \| f(min)` | `min([1, 2])` | `1`
-`[1, 2] \| f(zip, [3, 4])` | `zip([1, 2], [3, 4])` | `[[1, 3], [2, 4]]`
+`[1, 2] \| f(zip, [3, 4])` | `zip([1, 2], [3, 4])` | `[(1, 3), (2, 4)]`
 `[1, 2] \| f(sorted, reverse=True)` | `sorted([1, 2], reverse=True)` | `[2, 1]`
-`[1, 2] \| f(map, str, X)` | `map([1, 2], str)` | `['1', '2']`
+`[1, 2] \| f(map, str, X)` | `map(str, [1, 2])` | `['1', '2']`
 
 This library only works if each pipeline function has exactly one input and one 
 output. It also requires that the initial input object does not implement the 
