@@ -2,7 +2,7 @@
 A utility for calling functions in pipelines.
 """
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 from itertools import chain
 from typing import Callable, Any

@@ -2,6 +2,13 @@
 
 
 
+## v0.2.0 (2024-04-19)
+
+### Feature
+
+* feat: add placeholders ([`c606fde`](https://github.com/kalekundert/pipeline_func/commit/c606fde25dd217f57ddebf7a728a5fef1ffb6145))
+
+
 ## v0.1.0 (2024-04-04)
 
 ### Chore
