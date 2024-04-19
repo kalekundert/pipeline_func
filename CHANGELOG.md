@@ -2,6 +2,15 @@
 
 
 
+## v1.0.0 (2024-04-19)
+
+### Breaking
+
+* feat: commit to maintain backwards compatibility
+
+BREAKING CHANGE: initial public release ([`027dfec`](https://github.com/kalekundert/pipeline_func/commit/027dfec8462008ad85157b25f68ff61098eceaeb))
+
+
 ## v0.2.0 (2024-04-19)
 
 ### Feature
