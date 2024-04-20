@@ -14,36 +14,35 @@ class PipelineFunc:
         self.args = args
         self.kwargs = kwargs
 
-        has_placeholder = any(
-                isinstance(x, PipelineArg)
-                for x in chain(args, kwargs.values())
-        )
-        if has_placeholder:
-            self._call = self._call_with_placeholder
-        else:
-            self._call = self._call_without_placeholder
-
     def __repr__(self) -> str:
         func_arg = [self.func.__name__]
         return _function_repr('f', func_arg, self.args, self.kwargs)
 
     def __ror__(self, other: Any) -> Any:
-        return self._call(other)
+        found_placeholder = False
 
-    def _call_without_placeholder(self, other: Any) -> Any:
-        return self.func(other, *self.args, **self.kwargs)
+        def is_placeholder(x):
+            if isinstance(x, PipelineArg):
+                nonlocal found_placeholder
+                found_placeholder = True
+                return True
+            else:
+                return False
 
-    def _call_with_placeholder(self, other: Any) -> Any:
         args = [
                 x._PipelineArg__transform(other)
-                if isinstance(x, PipelineArg) else x
+                if is_placeholder(x) else x
                 for x in self.args
         ]
         kwargs = {
                 k: x._PipelineArg__transform(other)
-                   if isinstance(x, PipelineArg) else x
+                   if is_placeholder(x) else x
                 for k, x in self.kwargs.items()
         }
+
+        if not found_placeholder:
+            args = [other, *args]
+
         return self.func(*args, **kwargs)
 
 class PipelineArg:
